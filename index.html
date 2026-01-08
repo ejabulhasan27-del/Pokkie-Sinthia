@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Sinthia</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            padding: 2rem;
+            max-width: 800px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 8px 32px rgba(255, 105, 180, 0.3);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #FF1493;
+            text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: bounce-in 1.5s forwards 0.5s;
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            color: #8A2BE2;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fade-in 1s forwards 2s;
+        }
+
+        .next-button {
+            padding: 1rem 3rem;
+            font-size: 1.5rem;
+            background: linear-gradient(45deg, #FF1493, #8A2BE2);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.5);
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fade-in 1s forwards 3s;
+        }
+
+        .next-button:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        @keyframes bounce-in {
+            0% { transform: scale(0); opacity: 0; }
+            60% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes fade-in {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .confetti, .balloon, .heart, .star {
+            position: absolute;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>
+            Happy Birthday<br>
+            My Sinthia! <br>🎉🎂
+        </h1>
+
+        <div class="subtitle">
+            My Pokkie
+        </div>
+
+        <button class="next-button" onclick="goToNextPage()">Aikhane Chap deo ✨</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+
+    <script>
+        function goToNextPage() {
+            gsap.to('.next-button', {
+                scale: 1.2,
+                yoyo: true,
+                repeat: 1,
+                duration: 0.3,
+                onComplete: () => {
+                    window.location.href = "memorylane.html";
+                }
+            });
+        }
+
+        function createFloatingElements() {
+            const elements = ['🎈', '❤️', '✨', '🎉'];
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const el = document.createElement('div');
+                    el.innerHTML = elements[Math.floor(Math.random() * elements.length)];
+                    el.style.position = 'absolute';
+                    el.style.left = Math.random() * 100 + 'vw';
+                    el.style.top = '-50px';
+                    el.style.fontSize = (Math.random() * 25 + 15) + 'px';
+                    document.body.appendChild(el);
+
+                    gsap.to(el, {
+                        y: window.innerHeight + 100,
+                        rotation: Math.random() * 360,
+                        duration: Math.random() * 6 + 4,
+                        onComplete: () => el.remove()
+                    });
+                }, i * 200);
+            }
+        }
+
+        window.addEventListener('load', createFloatingElements);
+        setInterval(createFloatingElements, 5000);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Letter For You ✨</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f8e1f4, #e0c3f7, #c2e6ff);
+            background-size: 400% 400%;
+            animation: gradientBackground 15s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            opacity: 0;
+            animation: fadeIn 3s forwards 0.5s;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #6a4c93;
+            margin-bottom: 15px;
+        }
+
+        .letter-container {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(106, 76, 147, 0.3);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .letter {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #333;
+            min-height: 200px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 2px solid #6a4c93;
+            color: #6a4c93;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #6a4c93;
+            color: white;
+        }
+
+        .floating-element {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.7;
+            animation: float 6s ease-in-out infinite alternate;
+        }
+
+        .cursor-effect {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: rgba(255, 182, 193, 0.7);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            from { transform: translateY(0); }
+            to { transform: translateY(-20px); }
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="container">
+    <header>
+        <h1>For My Cutest Wifee❤️</h1>
+    </header>
+
+    <div class="letter-container">
+        <div class="letter" id="typed-text"></div>
+    </div>
+
+    <a href="javascript:history.back()" class="back-button">
+        <i class="fas fa-arrow-left"></i> Back to Birthday Cake
+    </a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    const letterContent =
+`My Wife,
+
+I dont have any words to explain how much im luck to have you. 2024 was my best year yet.I got you
+in that year.I love you forever babe.I wish you will get a medical college seat and fullfil your 
+dream to be a doctor. Remember your pokkie always love you.You are the most prettiest,most gorgeous
+lady i have ever seen. (Amr bacca r ma atto sundori, amr bacca flex nibe sobair kase ,amio nibo amr 
+bou re nia). Happy birthday my pokkie .Happy Last teen birthday pokkie.(Amk vuila jaien na ektu attention dien 
+and lots of valobasa)Enjoy your Day
+I love you babe
+Happy Birthday 💖`;
+
+    new Typed('#typed-text', {
+        strings: [letterContent],
+        typeSpeed: 30,
+        showCursor: true,
+        cursorChar: '|'
+    });
+
+    document.addEventListener('mousemove', function (e) {
+        const cursor = document.createElement('div');
+        cursor.className = 'cursor-effect';
+        cursor.style.left = e.pageX + 'px';
+        cursor.style.top = e.pageY + 'px';
+        document.body.appendChild(cursor);
+
+        setTimeout(() => {
+            cursor.style.opacity = 1;
+            setTimeout(() => cursor.remove(), 500);
+        }, 10);
+    });
+});
+</script>
+
+</body>
+</html>
